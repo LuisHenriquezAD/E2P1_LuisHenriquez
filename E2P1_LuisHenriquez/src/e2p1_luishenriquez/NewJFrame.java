@@ -1,9 +1,9 @@
 package e2p1_luishenriquez;
 
-import static e2p1_luishenriquez.Numero.leer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,13 +14,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class NewJFrame extends javax.swing.JFrame {
-public String residuo;
-    public int div ;
-    public int res ;
+
+    public String residuo;
+    public int div;
+    public int res;
     public int base;
     public int num;
     static Scanner leer = new Scanner(System.in);
-    static public ArrayList<Numero> numeros = new ArrayList();
+    static public List<Numero> numeros = new ArrayList<>();
 
     public String getResiduo() {
         return residuo;
@@ -37,9 +38,7 @@ public String residuo;
     public void setRes(int res) {
         this.res = res;
     }
-    
-    
-    
+
     public int getDiv() {
         return div;
     }
@@ -58,7 +57,7 @@ public String residuo;
     }
 
     public ArrayList getNumeros() {
-        return numeros;
+        return (ArrayList) numeros;
     }
 
     public void setBase(int base) {
@@ -77,6 +76,7 @@ public String residuo;
         this.base = base;
         this.num = num;
     }
+
     public NewJFrame() {
         initComponents();
     }
@@ -158,7 +158,10 @@ public String residuo;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   int numero;
+
+        Scanner leer = new Scanner(System.in);
+
+        int numero;
         int bas;
         Numero help;
 
@@ -182,35 +185,82 @@ public String residuo;
                 numero = leer.nextInt();
                 System.out.println("Ingrese la base: ");
                 bas = leer.nextInt();
-                while(bas < 2 || bas > 35){
-                  System.out.println("LA BASE TIENE QUE SER MAYOR QUE 2 Y MENOR QUE 35");  
-                  System.out.println("Ingrese la base: ");
-                bas = leer.nextInt();  
+                while (bas < 2 || bas > 35) {
+                    System.out.println("LA BASE TIENE QUE SER MAYOR QUE 2 Y MENOR QUE 35");
+                    System.out.println("Ingrese la base: ");
+                    bas = leer.nextInt();
                 }
-                help = new Numero(numero, bas);
-
-                //se asignan valores a los atributos del nuevo objeto
-                help.setBase(bas);
-                help.setNum(numero);
-
-                //se añade el objeto al final del array
+                System.out.println("NO PUDE HACER QUE DIERA LOS VALORES CORRECTOS, NO LE ENTENDI");
+                help = new Numero(bas, numero);
+                String residuo = help.decToBase(bas, numero);
                 numeros.add(help);
-                System.out.printf("%d",numeros);
-   String residuo;
-   residuo = help.decToBase(bas, numero);
-   
                 break;
 
             case 2:
-                System.out.println("Cual quiere borrar??");
+                Numero ayuda = new Numero();
+                ayuda.eliminar();
                 break;
 
         }
-  
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+ Scanner leer = new Scanner(System.in);
+        
+
+        System.out.println(" SELECCIONE");
+
+        for (int i = 0; i < numeros.size(); i++) {
+            Numero num = numeros.get(i);
+            String bas = "BASE " + num.getBase();
+            String resultado = num.decToBase(num.getBase(), num.getNum());
+            System.out.println((i + 1) + ". " + num.getNum() + "__ " + bas + "__" + resultado);
+        }
+
+        System.out.println("PRIMERO");
+        int N1 = leer.nextInt();
+
+        System.out.println("Seleccione el segundo número:");
+        int N2 = leer.nextInt();
+
+        Numero num1 = numeros.get(N1 - 1);
+        Numero num2 = numeros.get(N2 - 1);
+
+        System.out.println("Seleccione");
+        System.out.println("1. Suma");
+        System.out.println("2. Resta");
+        System.out.println("3. Multiplicación");
+
+        int seleccionar = leer.nextInt();
+        while(seleccionar <1 || seleccionar > 3){
+         System.out.println("Seleccione");
+        System.out.println("1. Suma");
+        System.out.println("2. Resta");
+        System.out.println("3. Multiplicación");
+
+         seleccionar = leer.nextInt();
+        }
+        switch (seleccionar) {
+            case 1:
+                int suma = num1.getNum() + num2.getNum();
+                System.out.println("SUMA");
+                System.out.println("Resultado : " + suma);
+                break;
+            case 2:
+                int resta = num1.getNum() - num2.getNum();
+                System.out.println("RESTA");
+                System.out.println("Resultado: " + resta);
+                break;
+            case 3:
+                int multiplicacion = num1.getNum() * num2.getNum();
+                System.out.println("MULTIPLICACION");
+                System.out.println("Resultado : " + multiplicacion);
+                break;
          
+        }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

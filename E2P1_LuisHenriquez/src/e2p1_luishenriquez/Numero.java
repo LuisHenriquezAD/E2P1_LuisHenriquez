@@ -2,55 +2,31 @@ package e2p1_luishenriquez;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 public class Numero {
 
     public String residuo;
     public String residuoCOM;
-    public int div ;
-    public int res ;
+    public int div;
+    public int res;
     public int base;
     public int num;
-    static Scanner leer = new Scanner(System.in);
-    static public ArrayList<Numero> numeros = new ArrayList();
-
-    public String getResiduo() {
-        return residuo;
-    }
 
     public void setResiduo(String residuo) {
         this.residuo = residuo;
     }
 
-    public int getRes() {
-        return res;
-    }
-
-    public void setRes(int res) {
-        this.res = res;
-    }
-    
-    
-    
-    public int getDiv() {
-        return div;
+    public void setResiduoCOM(String residuoCOM) {
+        this.residuoCOM = residuoCOM;
     }
 
     public void setDiv(int div) {
         this.div = div;
     }
 
-    public int getBase() {
-
-        return base;
-    }
-
-    public int getNum() {
-        return num;
-    }
-
-    public ArrayList getNumeros() {
-        return numeros;
+    public void setRes(int res) {
+        this.res = res;
     }
 
     public void setBase(int base) {
@@ -61,8 +37,31 @@ public class Numero {
         this.num = num;
     }
 
-    public void setNumeros(ArrayList numeros) {
-        this.numeros = numeros;
+    public String getResiduo() {
+        return residuo;
+    }
+
+    public String getResiduoCOM() {
+        return residuoCOM;
+    }
+
+    public int getDiv() {
+        return div;
+    }
+
+    public int getRes() {
+        return res;
+    }
+
+    public int getBase() {
+        return base;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public Numero() {
     }
 
     public Numero(int base, int num) {
@@ -70,68 +69,50 @@ public class Numero {
         this.num = num;
     }
 
-    
-
     public String decToBase(int base, int numero) {
-    
-        
-        
-    div = base + 10;    
-    while(div> base){
-        div = numero / base;
-        res = numero % base;
-        numero = div;
-        residuo += res;
-    }
-        System.out.println(residuo);
-        
-        for(int i = residuo.length(); i < 0; i--){
-           residuoCOM += residuo.charAt(i);  
-        }
-        System.out.printf("%s",residuoCOM);
-    return residuoCOM;
-    }
-    
-    
-    
-    
-            /*
+        String residuo = "";
 
-    public String numToChar(int restotal){
-    String digitos = " ";
-    //Aqui planeo colocar los if o los ASCCI para ver los caracteres
-    // EJEMPLO 1515 = ff
-    return digitos;    
-    }
-    
-    public int charToNum(String digitos){
-    Aqui hare los if con un for que lea todas las letras del string y se agregue a un entero
-    que va a imprimir los valores 
-    }
-    
-    
-    
-     public static void eliminar() {
-        Scanner Lea = new Scanner(System.in);
-        System.out.println("Cual quiere borrar??");
-        for (int i = 0; i < .size(); i++) {
-            System.out.println
+        while (numero > 0) {
+            int res = numero % base;
+            numero = numero / base;
+            residuo = res + residuo;
         }
 
-        int num = Lea.nextInt();
-        Lea.nextLine();
+        return residuo;
+    }
 
-        
-            System.out.println("Ya se borro el numero");
-            
+    public void eliminar() {
+        Scanner lea = new Scanner(System.in);
 
-            .remove();
+        System.out.println("¿Cuál número desea borrar?");
+        for (int i = 0; i < NewJFrame.numeros.size(); i++) {
+            Numero num = NewJFrame.numeros.get(i);
+            String baseS = "base " + num.getBase();
+            String resultado = num.decToBase(num.getBase(), num.getNum());
+            System.out.println((i + 1) + ". " + num.getNum() + " " + baseS + ": " + resultado);
+        }
 
+        int OPC = lea.nextInt();
+        lea.nextLine();
+
+        if (OPC >= 1 && OPC <= NewJFrame.numeros.size()) {
+            NewJFrame.numeros.remove(OPC - 1);
+            System.out.println("El número ha sido eliminado.");
         } else {
-            System.out.println("El numero que ingreso no es valido");
+            System.out.println("El número ingresado no es válido.");
         }
-
     }
-*/
-        
+
+    public void agregar() {
+        NewJFrame.numeros.add(this);
+    }
+
+    @Override
+    public String toString() {
+        return num + " base " + base + ": " + decToBase(base, num);
+    }
+
+    
+      
+       
 }
