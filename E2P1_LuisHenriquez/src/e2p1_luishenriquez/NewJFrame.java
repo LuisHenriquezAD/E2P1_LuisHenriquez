@@ -207,8 +207,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
- Scanner leer = new Scanner(System.in);
-        
+        Scanner leer = new Scanner(System.in);
 
         System.out.println(" SELECCIONE");
 
@@ -232,35 +231,36 @@ public class NewJFrame extends javax.swing.JFrame {
         System.out.println("1. Suma");
         System.out.println("2. Resta");
         System.out.println("3. Multiplicación");
-
+   
         int seleccionar = leer.nextInt();
-        while(seleccionar <1 || seleccionar > 3){
-         System.out.println("Seleccione");
-        System.out.println("1. Suma");
-        System.out.println("2. Resta");
-        System.out.println("3. Multiplicación");
+        while (seleccionar < 1 || seleccionar > 4) {
+            System.out.println("Seleccione");
+            System.out.println("1. Suma");
+            System.out.println("2. Resta");
+            System.out.println("3. Multiplicación");
+            seleccionar = leer.nextInt();
 
-         seleccionar = leer.nextInt();
+            Numero help = new Numero();
+            switch (seleccionar) {
+                case 1:
+                    int suma = num1.getNum() + num2.getNum();
+                    System.out.println("SUMA");
+                    System.out.println("Resultado : " + suma);
+                    break;
+                case 2:
+                    int resta = num1.getNum() - num2.getNum();
+                    System.out.println("RESTA");
+                    System.out.println("Resultado: " + resta);
+                    break;
+                case 3:
+                    int multiplicacion = num1.getNum() * num2.getNum();
+                    System.out.println("MULTIPLICACION");
+                    System.out.println("Resultado : " + multiplicacion);
+                    break;
+
+            }
+
         }
-        switch (seleccionar) {
-            case 1:
-                int suma = num1.getNum() + num2.getNum();
-                System.out.println("SUMA");
-                System.out.println("Resultado : " + suma);
-                break;
-            case 2:
-                int resta = num1.getNum() - num2.getNum();
-                System.out.println("RESTA");
-                System.out.println("Resultado: " + resta);
-                break;
-            case 3:
-                int multiplicacion = num1.getNum() * num2.getNum();
-                System.out.println("MULTIPLICACION");
-                System.out.println("Resultado : " + multiplicacion);
-                break;
-         
-        }
-    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

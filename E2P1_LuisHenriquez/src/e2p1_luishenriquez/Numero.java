@@ -83,6 +83,21 @@ public class Numero {
         return residuo.reverse().toString();
     }
 
+    public int decToBase() {
+
+        int dku = 0;
+        int poder = 1;
+        
+        for (int i = residuo.length() - 1; i >= 0; i--) {
+            int num = Character.getNumericValue(residuo.charAt(i));
+            int res = num * (int) Math.pow(base, dku);
+            poder *= res;
+            dku++;
+            System.out.println(res);
+        }
+        return poder;
+    }
+
     public void eliminar() {
         Scanner lea = new Scanner(System.in);
 
@@ -173,7 +188,5 @@ public class Numero {
             return 'X';
         }
     }
-    
-    
 
 }
