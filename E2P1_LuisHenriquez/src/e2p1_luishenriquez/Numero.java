@@ -70,15 +70,17 @@ public class Numero {
     }
 
     public String decToBase(int base, int numero) {
-        String residuo = "";
+
+        StringBuilder residuo = new StringBuilder();
+        int resi;
 
         while (numero > 0) {
-            int res = numero % base;
+            resi = numero % base;
             numero = numero / base;
-            residuo = res + residuo;
+            residuo.append(resi);
         }
 
-        return residuo;
+        return residuo.reverse().toString();
     }
 
     public void eliminar() {
@@ -112,7 +114,66 @@ public class Numero {
         return num + " base " + base + ": " + decToBase(base, num);
     }
 
+    public char numToChar(int num) {
+        if (num >= 0 && num <= 9) {
+            return (char) ('0' + num); // Caracteres del '0' al '9'
+        } else if (num == 10) {
+            return 'a';
+        } else if (num == 11) {
+            return 'b';
+        } else if (num == 12) {
+            return 'c';
+        } else if (num == 13) {
+            return 'd';
+        } else if (num == 14) {
+            return 'e';
+        } else if (num == 15) {
+            return 'f';
+        } else if (num == 16) {
+            return 'g';
+        } else if (num == 17) {
+            return 'h';
+        } else if (num == 18) {
+            return 'i';
+        } else if (num == 19) {
+            return 'j';
+        } else if (num == 20) {
+            return 'k';
+        } else if (num == 21) {
+            return 'l';
+        } else if (num == 22) {
+            return 'm';
+        } else if (num == 23) {
+            return 'n';
+        } else if (num == 24) {
+            return 'o';
+        } else if (num == 25) {
+            return 'p';
+        } else if (num == 26) {
+            return 'q';
+        } else if (num == 27) {
+            return 'r';
+        } else if (num == 28) {
+            return 's';
+        } else if (num == 29) {
+            return 't';
+        } else if (num == 30) {
+            return 'u';
+        } else if (num == 31) {
+            return 'v';
+        } else if (num == 32) {
+            return 'w';
+        } else if (num == 33) {
+            return 'x';
+        } else if (num == 34) {
+            return 'y';
+        } else if (num == 35) {
+            return 'z';
+        } else {
+            return 'X';
+        }
+    }
     
-      
-       
+    
+
 }
